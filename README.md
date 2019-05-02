@@ -1,5 +1,7 @@
 ## yarnlock origin changer
 
+[![Build Status](https://travis-ci.org/stefanpenner/yarnlock-origin-changer.svg?branch=master)](https://travis-ci.org/stefanpenner/yarnlock-origin-changer)
+
 A simple CLI which allows updating of an origin's within a yarn.lock file
 
 ### Installation
