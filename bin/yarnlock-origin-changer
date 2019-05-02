@@ -8,6 +8,7 @@ function main([file, from, to]) {
 
   if (!fs.existsSync(file) || typeof from !== 'string' || typeof to !== 'string') {
     console.log(help());
+    process.exit(1);
   }
   console.log(replacer(fs.readFileSync(file, 'UTF8'), from, to));
 }
