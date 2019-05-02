@@ -10,7 +10,7 @@ function main([file, from, to]) {
     console.log(help());
     process.exit(1);
   }
-  console.log(replacer(fs.readFileSync(file, 'UTF8'), from, to));
+  fs.writeFileSync(file, replacer(fs.readFileSync(file, 'UTF8'), from, to));
 }
 
 function help() {
