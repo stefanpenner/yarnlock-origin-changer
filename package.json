@@ -11,7 +11,8 @@
     "mocha": "^6.1.4"
   },
   "dependencies": {
-    "@yarnpkg/lockfile": "^1.1.0"
+    "@yarnpkg/lockfile": "^1.1.0",
+    "whatwg-url": "^7.0.0"
   },
   "scripts": {
     "test": "mocha  tests"
