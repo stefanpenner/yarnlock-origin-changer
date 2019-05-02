@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+'use strict';
+
+const replacer = require('../lib/replacer');
+const fs = require('fs');
+
+function main([file, from, to]) {
+
+  if (!fs.existsSync(file) || typeof from !== 'string' || typeof to !== 'string') {
+    console.log(help());
+  }
+  console.log(replacer(fs.readFileSync(file, 'UTF8'), from, to));
+}
+
+function help() {
+  return `
+  usage: yarnlock-origin-changer <lockfile> <from-origin> <to-origin>
+
+    lockfile: path to the lockfile you  wish to update
+    from-origin: original origin we plan to replace
+    to-origin: origin we place to replace the original with
+
+  Example:
+    yarnlock-origin-changer ./yarn.lock https://registry.npmjs.org https://registry.yarnpkg.com
+  `
+}
+
+main(process.argv.slice(2));
