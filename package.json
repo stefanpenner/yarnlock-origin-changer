@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "bin": {
+    "yarnlock-origin-changer": "./bin/yarnlock-origin-changer"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.1.4"
