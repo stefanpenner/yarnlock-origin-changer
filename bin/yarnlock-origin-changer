@@ -10,7 +10,14 @@ async function main([file, from, to]) {
     console.log(help());
     process.exit(1);
   }
-  fs.writeFileSync(file, replacer(fs.readFileSync(file, 'UTF8'), from, to));
+
+  const {
+    result,
+    total,
+    replaced
+  } = replacer(fs.readFileSync(file, 'UTF8'), from, to);
+  console.log(`yarn-lock-origin-changer: ${replaced} of ${total} entries have been migrated from: '${from}' to: '${to}'`);
+  fs.writeFileSync(file, result);
   process.exit(0);
 }
 
@@ -19,8 +26,8 @@ function help() {
   usage: yarnlock-origin-changer <lockfile> <from-origin> <to-origin>
 
     lockfile: path to the lockfile you  wish to update
-    from-origin: original origin we plan to replace
-    to-origin: origin we place to replace the original with
+    from-origin: URL of the original origin we plan to replace
+    to-origin: URL of the origin we intend to replace the original with
 
   Example:
     yarnlock-origin-changer ./yarn.lock https://registry.npmjs.org https://registry.yarnpkg.com
