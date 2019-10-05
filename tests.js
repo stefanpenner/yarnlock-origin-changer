@@ -28,6 +28,25 @@ describe('yarnlock-hostname-changer', function() {
     expect(total).to.eql(132);
   });
 
+  it('also works for target url with pathname', function() {
+    const original = fs.readFileSync(`/${FIXTURES}/yarn.lock`, 'UTF8');
+    const parsed = lockfile.parse(original);
+
+    expect(original).to.contain('https://registry.yarnpkg.com')
+    expect(original).to.not.contain('http://registry.iamstef.net/hey/stef');
+
+    const {
+      result,
+      total,
+      replaced
+    } = replacer(original, 'https://registry.yarnpkg.com', 'http://registry.iamstef.net/hey/stef');
+
+    expect(result).to.not.contain('https://registry.yarnpkg.com');
+    expect(result).to.contain('http://registry.iamstef.net/hey/stef');
+    expect(replaced).to.eql(132);
+    expect(total).to.eql(132);
+  });
+
   it('test CLI', function() {
     const TMP = __dirname + '/tmp';
 
