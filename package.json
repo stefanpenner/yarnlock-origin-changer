@@ -6,6 +6,10 @@
   "bin": {
     "yarnlock-origin-changer": "./bin/yarnlock-origin-changer"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanpenner/yarnlock-origin-changer.git"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
     "execa": "^5.0.0",
